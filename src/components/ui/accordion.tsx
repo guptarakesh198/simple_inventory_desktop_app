@@ -16,7 +16,7 @@ export function Accordion({ title, children }: { title: string; children: React.
   return (
     <div className="border rounded-md mb-4 bg-background">
       <button
-        className="w-full flex justify-between items-center px-4 py-3 font-semibold text-lg focus:outline-none"
+        className="w-full cursor-pointer flex justify-between items-center px-4 py-3 font-semibold text-lg focus:outline-none"
         onClick={() => setOpen(o => !o)}
       >
         {title}

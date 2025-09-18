@@ -5,6 +5,7 @@
   "main": "main.js",
   "type": "module",
   "scripts": {
+    "api":"node ./Back_end/server.js",
     "start": "electron .",
     "dev": "vite",
     "build": "tsc -b && vite build",

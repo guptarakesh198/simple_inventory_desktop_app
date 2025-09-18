@@ -1,7 +1,7 @@
-const Product = require('../models/Product');
+import Product from '../models/Product.js';
 
 // Create Product
-exports.createProduct = async (req, res) => {
+export const createProduct = async (req, res) => {
   try {
     const { ProductName, Category, SquCode, Quantity, ThresholdQuantity, Price } = req.body;
 
@@ -20,7 +20,7 @@ exports.createProduct = async (req, res) => {
 };
 
 // Add multiple products
-exports.addMultipleProducts = async (req, res) => {
+export const addMultipleProducts = async (req, res) => {
   try {
     const products = req.body; // Expecting an array of product objects
     if (!Array.isArray(products) || products.length === 0) {
@@ -34,20 +34,20 @@ exports.addMultipleProducts = async (req, res) => {
 };
 
 // Get all Products
-exports.getAllProducts = async (req, res) => {
+export const getAllProducts = async (req, res) => {
   const products = await Product.findAll();
   res.json(products);
 };
 
 // Get one Product
-exports.getProductById = async (req, res) => {
+export const getProductById = async (req, res) => {
   const product = await Product.findByPk(req.params.id);
   if (!product) return res.status(404).json({ error: 'Product not found' });
   res.json(product);
 };
 
 // Update Product
-exports.updateProduct = async (req, res) => {
+export const updateProduct = async (req, res) => {
   try {
     const product = await Product.findByPk(req.params.id);
     if (!product) return res.status(404).json({ error: 'Product not found' });
@@ -60,7 +60,7 @@ exports.updateProduct = async (req, res) => {
 };
 
 // Delete Product
-exports.deleteProduct = async (req, res) => {
+export const deleteProduct = async (req, res) => {
   const product = await Product.findByPk(req.params.id);
   if (!product) return res.status(404).json({ error: 'Product not found' });
   await product.destroy();
@@ -68,7 +68,7 @@ exports.deleteProduct = async (req, res) => {
 };
 
 // Increase quantities for multiple products
-exports.increaseProductQuantity = async (req, res) => {
+export const increaseProductQuantity = async (req, res) => {
   try {
     const items = req.body; // Expecting [{ id, quantity }, ...]
     if (!Array.isArray(items) || items.length === 0) {
@@ -97,7 +97,7 @@ exports.increaseProductQuantity = async (req, res) => {
 };
 
 // Decrease quantities for multiple products
-exports.decreaseProductQuantity = async (req, res) => {
+export const decreaseProductQuantity = async (req, res) => {
   try {
     const items = req.body; // Expecting [{ id, quantity }, ...]
     if (!Array.isArray(items) || items.length === 0) {

@@ -1,6 +1,6 @@
-const express = require('express');
-const cors = require('cors');
-const productRoutes = require('./routes/productRoutes');
+import express from 'express';
+import cors from 'cors';
+import productRoutes from './routes/ProductRoutes.js';
 
 const app = express();
 app.use(cors()); // Enable CORS for all routes
@@ -14,4 +14,4 @@ app.get('/', (req, res) => {
 // Product routes
 app.use('/products', productRoutes);
 
-module.exports = app;
+export default app;
